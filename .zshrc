@@ -49,9 +49,6 @@ bindkey "^B" backward-char
 # git undo last commit alias
 alias git-undo="git reset --soft 'HEAD^'"
 
-# take me to my git home
-alias git-home='cd "$(git rev-parse --show-toplevel)"'
-
 # git difftool aliases
 alias gdt='git difftool'
 alias gdtc='git difftool --cached'
@@ -78,3 +75,19 @@ export LESS='-iR-P%f (%i/%m) Line %lt/%L'
 
 # reload .zshrc
 alias reload!='. ~/.zshrc'
+
+# take me to my git home
+alias git-home='cd "$(find-git-home)"'
+
+# find git home directory
+function find-git-home() {
+  git rev-parse --show-toplevel
+}
+
+# find the filename of the last migration based on file timestamp
+function last-migration() {
+  ls -rt `find "$(find-git-home)/db/migrate" -type f -name "*" -print` | tail -1
+}
+
+alias vlmg='vim "$(last-migration)"'
+
