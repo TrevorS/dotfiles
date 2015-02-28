@@ -87,4 +87,3 @@ function last-migration() {
 }
 
 alias vlmg='vim "$(last-migration)"'
-
