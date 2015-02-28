@@ -23,12 +23,9 @@ if [[ -a ~/.personal.after.rc ]]; then
   source ~/.personal.after.rc
 fi
 
-# correct terminal colors for gruvbox vim theme
-if [[ `uname` == 'Darwin' ]]; then
-  ~/.vim/plugged/gruvbox/gruvbox_256palette_osx.sh
-else
-  ~/.vim/plugged/gruvbox/gruvbox_256palette.sh
-fi
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/base16-ocean.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # set vim as the default editor
 export EDITOR=vim
