@@ -23,6 +23,19 @@ if [[ -a ~/.personal.after.rc ]]; then
   source ~/.personal.after.rc
 fi
 
+# make path changes
+if [[ -z $TMUX ]]; then
+  # rbenv
+  export PATH=$HOME/.rbenv/bin:$PATH
+  eval "$(rbenv init -)"
+
+  # use ./bin when it's safe (useful for Spring / tim pope's suggestion)
+  PATH=".git/safe/../../bin:$PATH"
+
+  # add node_modules/.bin to the path
+  PATH="$HOME/node_modules/.bin:$PATH"
+fi
+
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/base16-ocean.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
@@ -60,12 +73,6 @@ alias aga=ag-git-add
 alias l='ls'
 alias la='ls -la'
 alias lah='ls -lah'
-
-# use ./bin when it's safe (useful for Spring / tim pope's suggestion)
-PATH=".git/safe/../../bin:$PATH"
-
-# add node_modules/.bin to the path
-PATH="$HOME/node_modules/.bin:$PATH"
 
 # Change less to ignore case, show colors, and improve the prompt
 export LESS='-iR-P%f (%i/%m) Line %lt/%L'
