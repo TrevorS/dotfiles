@@ -63,6 +63,10 @@ alias git-undo="git reset --soft 'HEAD^'"
 alias gdt='git difftool'
 alias gdtc='git difftool --cached'
 
+# git alias to sort branches by recently updated
+alias gbs='git for-each-ref --sort=committerdate refs/heads/ \
+  --format="%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))"'
+
 # git add from pattern using ag
 function ag-git-add() {
   ag --nocolor --null --files-with-matches "$*" | xargs -0 git add
