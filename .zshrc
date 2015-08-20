@@ -73,6 +73,11 @@ function ag-git-add() {
 }
 alias aga=ag-git-add
 
+function git-heroku-commit() {
+  git ls-remote $1 | awk 'END{print $1}' | xargs git show
+}
+alias ghc=git-heroku-commit
+
 # ls aliases
 alias l='ls'
 alias la='ls -la'
