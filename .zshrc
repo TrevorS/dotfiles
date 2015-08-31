@@ -56,6 +56,11 @@ bindkey "^N" history-search-forward
 bindkey "^F" forward-char
 bindkey "^B" backward-char
 
+# ls aliases
+alias l='ls'
+alias la='ls -la'
+alias lah='ls -lah'
+
 # git undo last commit alias
 alias git-undo="git reset --soft 'HEAD^'"
 
@@ -78,11 +83,6 @@ function git-heroku-commit() {
 }
 alias ghc=git-heroku-commit
 
-# ls aliases
-alias l='ls'
-alias la='ls -la'
-alias lah='ls -lah'
-
 # Change less to ignore case, show colors, and improve the prompt
 export LESS='-iR-P%f (%i/%m) Line %lt/%L'
 
@@ -103,3 +103,13 @@ function last-migration() {
 }
 
 alias vlmg='vim "$(last-migration)"'
+
+function heroku-database-credentials() {
+  heroku pg:credentials $1 --app $2 | tail -n 1 | tr -d ' '
+}
+
+function heroku-pgcli() {
+  pgcli $(heroku-database-credentials $1 $2)
+}
+
+alias hpg=heroku-pgcli
