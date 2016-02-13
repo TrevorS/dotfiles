@@ -7,7 +7,7 @@ if [[ -a ~/.personal.before.rc ]]; then
 fi
 
 # Set name of the theme to load.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="mh"
 
 # zsh plugins
 plugins=(git rails ruby rake rbenv bundler mvn ssh-agent tmux)
@@ -36,12 +36,8 @@ if [[ -z $TMUX ]]; then
   PATH="$HOME/node_modules/.bin:$PATH"
 fi
 
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-ocean.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
-
 # set vim as the default editor
-export EDITOR=vim
+export EDITOR=nvim
 
 # vi mode
 bindkey -v
@@ -113,3 +109,7 @@ function heroku-pgcli() {
 }
 
 alias hpg=heroku-pgcli
+alias vim=nvim
+alias gdc='git diff --cached'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
