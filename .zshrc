@@ -7,7 +7,7 @@ if [[ -a ~/.personal.before.rc ]]; then
 fi
 
 # Set name of the theme to load.
-ZSH_THEME="mh"
+ZSH_THEME="pure"
 
 # zsh plugins
 plugins=(git rails ruby rake rbenv bundler mvn ssh-agent tmux)
@@ -35,6 +35,10 @@ if [[ -z $TMUX ]]; then
   # add node_modules/.bin to the path
   PATH="$HOME/node_modules/.bin:$PATH"
 fi
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/base16-eighties.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # set vim as the default editor
 export EDITOR=nvim
