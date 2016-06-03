@@ -7,7 +7,7 @@ if [[ -a ~/.personal.before.rc ]]; then
 fi
 
 # Set name of the theme to load.
-ZSH_THEME="pure"
+ZSH_THEME="mh"
 
 # zsh plugins
 plugins=(git rails ruby rake rbenv bundler mvn ssh-agent tmux)
